@@ -6,15 +6,12 @@
   <title>Педагог‑організатор – Головна</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <style>
     /* Custom styles */
     .hero {
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-    }
-    .hero img {
-      max-width: 100%;
-      height: auto;
+      background: linear-gradient(135deg, #e3f2fd, #ffffff);
     }
     .card img {
       height: 200px;
@@ -51,16 +48,16 @@
   </nav>
 
   <!-- Hero section -->
-  <section class="hero mt-5">
+  <section class="hero py-5 mt-5">
     <div class="container">
       <div class="row align-items-center">
-        <div class="col-lg-6 mb-4 mb-lg-0">
-          <h1 class="display-4 fw-bold">Вітаємо на ресурсі педагога‑організатора</h1>
+        <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
+          <h1 class="display-5 fw-bold">Вітаємо на ресурсі педагога‑організатора</h1>
           <p class="lead">Цей веб‑застосунок містить корисні міні‑програми та матеріали для роботи педагога‑організатора на 2025–2026 навчальний рік. Оберіть потрібний розділ, щоб розпочати.</p>
           <a href="#apps" class="btn btn-primary btn-lg">Переглянути міні‑застосунки</a>
         </div>
         <div class="col-lg-6 text-center">
-          <img src="assets/images/hero.png" alt="Абстрактна ілюстрація натхнення та навчання">
+          <img src="assets/images/hero.png" class="img-fluid" alt="Абстрактна ілюстрація натхнення та навчання">
         </div>
       </div>
     </div>
@@ -70,9 +67,9 @@
   <section id="apps" class="py-5 bg-light">
     <div class="container">
       <h2 class="mb-4 text-center">Міні‑застосунки</h2>
-      <div class="row g-4">
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="appRow">
         <!-- App cards -->
-        <div class="col-md-6 col-lg-4">
+        <div class="col">
           <div class="card h-100">
             <img src="assets/images/plan.png" class="card-img-top" alt="Річний план">
             <div class="card-body d-flex flex-column">
@@ -82,7 +79,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4">
+        <div class="col">
           <div class="card h-100">
             <img src="assets/images/calendar.png" class="card-img-top" alt="Календарне планування">
             <div class="card-body d-flex flex-column">
@@ -92,7 +89,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4">
+        <div class="col">
           <div class="card h-100">
             <img src="assets/images/interaction.png" class="card-img-top" alt="Схема взаємодії">
             <div class="card-body d-flex flex-column">
@@ -102,7 +99,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4">
+        <div class="col">
           <div class="card h-100">
             <img src="assets/images/parliament.png" class="card-img-top" alt="План парламенту">
             <div class="card-body d-flex flex-column">
@@ -112,7 +109,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4">
+        <div class="col">
           <div class="card h-100">
             <img src="assets/images/creative.png" class="card-img-top" alt="Креативне дозвілля">
             <div class="card-body d-flex flex-column">
@@ -122,7 +119,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4">
+        <div class="col">
           <div class="card h-100">
             <img src="assets/images/scenarios.png" class="card-img-top" alt="Сценарії свят">
             <div class="card-body d-flex flex-column">
@@ -132,7 +129,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4">
+        <div class="col">
           <div class="card h-100">
             <img src="assets/images/flashmob.png" class="card-img-top" alt="Банк ідей">
             <div class="card-body d-flex flex-column">
@@ -142,7 +139,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4">
+        <div class="col">
           <div class="card h-100">
             <img src="assets/images/parents.png" class="card-img-top" alt="Взаємодія з батьками">
             <div class="card-body d-flex flex-column">
@@ -152,7 +149,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4">
+        <div class="col">
           <div class="card h-100">
             <img src="assets/images/community.png" class="card-img-top" alt="Партнерство з громадою">
             <div class="card-body d-flex flex-column">
@@ -162,7 +159,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4">
+        <div class="col">
           <div class="card h-100">
             <img src="assets/images/portfolio.png" class="card-img-top" alt="Портфоліо">
             <div class="card-body d-flex flex-column">
@@ -172,9 +169,38 @@
             </div>
           </div>
         </div>
+        <!-- Add app card -->
+        <div class="col" id="addAppCol">
+          <div class="card h-100 text-center border-2 border-primary" style="cursor:pointer;">
+            <div class="card-body d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-plus-circle display-4 mb-3 text-primary"></i>
+              <p class="card-text">Створити новий міні‑застосунок</p>
+              <button class="btn btn-outline-primary mt-auto" id="addAppBtn">Додати</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- Modal for new mini-app -->
+  <div class="modal fade" id="newAppModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Новий міні‑застосунок</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрити"></button>
+        </div>
+        <div class="modal-body">
+          <textarea id="newAppPrompt" class="form-control" rows="4" placeholder="Опишіть, який застосунок потрібен"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+          <button type="button" class="btn btn-primary" id="createAppBtn">Створити</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="py-4 bg-light">
     <div class="container text-center">
@@ -183,6 +209,83 @@
   </footer>
 
   <!-- Bootstrap JS -->
+  <script src="assets/app.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeo64P0x7bS2bQ+Ws4PrUFCeA9noELlN7p1F7HQZ3nxkJ0St" crossorigin="anonymous"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function(){
+    const addBtn = document.getElementById('addAppBtn');
+    const modal = new bootstrap.Modal(document.getElementById('newAppModal'));
+    const promptEl = document.getElementById('newAppPrompt');
+    const overlay = document.getElementById('geminiOverlay');
+    const appRow = document.getElementById('appRow');
+    const addCol = document.getElementById('addAppCol');
+
+    function renderCustomApps(){
+      appRow.querySelectorAll('.custom-app').forEach(el => el.remove());
+      const list = JSON.parse(localStorage.getItem('miniapp:list')||'[]');
+      list.forEach(item => {
+        const col = document.createElement('div');
+        col.className = 'col custom-app';
+        col.innerHTML = `<div class="card h-100"><div class="card-body d-flex flex-column">\n            <h5 class="card-title">${item.title}</h5>\n            <p class="card-text">Користувацький міні‑застосунок</p>\n            <a href="generated.html?id=${item.id}" class="btn btn-outline-primary mt-auto">Переглянути</a>\n          </div></div>`;
+        appRow.insertBefore(col, addCol);
+      });
+    }
+
+    renderCustomApps();
+
+    addBtn.addEventListener('click', () => {
+      promptEl.value = '';
+      modal.show();
+    });
+
+    document.getElementById('createAppBtn').addEventListener('click', async () => {
+      const prompt = promptEl.value.trim();
+      modal.hide();
+      if (!prompt) return;
+      const apiKey = localStorage.getItem('geminiApiKey') || '';
+      if (!apiKey) { alert('Будь ласка, вкажіть apiKey у параметрі URL: ?apiKey=YOUR_KEY'); return; }
+      const model = localStorage.getItem('geminiModel') || 'gemini-pro';
+      const requestBody = {
+        system_instruction: {
+          parts: [{ text: 'You are a pedagogue-organizer assistant. Create a standalone Ukrainian mini-app HTML page similar to existing ones. Use Bootstrap 5 and include <script src="assets/app.js"></script> before </body>. Return JSON with fields "title" and "html".' }]
+        },
+        contents: [{ parts: [{ text: `Description: ${prompt}` }] }],
+        generationConfig: {
+          responseMimeType: 'application/json',
+          responseSchema: {
+            type: 'OBJECT',
+            properties: {
+              title: { type: 'STRING' },
+              html: { type: 'STRING' }
+            },
+            required: ['title','html']
+          }
+        }
+      };
+      overlay.style.display = 'flex';
+      try {
+        const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestBody)
+        });
+        const data = await resp.json();
+        const jsonText = data.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
+        const obj = JSON.parse(jsonText);
+        const id = 'c' + Date.now();
+        localStorage.setItem('miniapp:' + id, obj.html);
+        const list = JSON.parse(localStorage.getItem('miniapp:list') || '[]');
+        list.push({ id, title: obj.title || 'Новий застосунок' });
+        localStorage.setItem('miniapp:list', JSON.stringify(list));
+        renderCustomApps();
+      } catch (err) {
+        console.error(err);
+        alert('Не вдалося створити міні-застосунок');
+      } finally {
+        overlay.style.display = 'none';
+      }
+    });
+  });
+  </script>
 </body>
 </html>
