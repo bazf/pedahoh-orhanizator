@@ -86,16 +86,16 @@
         alert('Будь ласка, вкажіть apiKey у параметрі URL: ?apiKey=YOUR_KEY');
         return;
       }
-      const sectionContext = section.innerText.trim();
-      const clone = document.body.cloneNode(true);
-      const ov = clone.querySelector('#geminiOverlay');
+      const sectionHtml = section.outerHTML;
+      const docClone = document.documentElement.cloneNode(true);
+      const ov = docClone.querySelector('#geminiOverlay');
       if (ov) ov.remove();
-      const pageContext = clone.innerText.trim();
+      const pageHtml = docClone.outerHTML;
       const requestBody = {
         system_instruction: {
-          parts: [{ text: 'You extend the given section. Only return JSON with field "html" containing extra HTML.' }]
+          parts: [{ text: 'You are a pedagogue-organizer assistant. Extend the given section with Bootstrap-friendly, responsive HTML. Use relative units so content blends with the existing layout. Only return JSON with field "html" containing the snippet.' }]
         },
-        contents: [{ parts: [{ text: `User request: ${prompt}\n\nPage context:\n${pageContext}\n\nSection context:\n${sectionContext}` }] }],
+        contents: [{ parts: [{ text: `User request: ${prompt}\n\nPage HTML:\n${pageHtml}\n\nSection HTML:\n${sectionHtml}` }] }],
         generationConfig: {
           responseMimeType: 'application/json',
           responseSchema: {
