@@ -42,6 +42,24 @@
     const bsModal = new bootstrap.Modal(modalEl);
     let targetSection = null;
 
+    // overlay shown while generating content
+    const overlay = document.createElement('div');
+    overlay.id = 'geminiOverlay';
+    Object.assign(overlay.style, {
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      width: '100%',
+      height: '100%',
+      background: 'rgba(0,0,0,0.6)',
+      display: 'none',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: '2000'
+    });
+    overlay.innerHTML = '<div class="text-white text-center"><div class="spinner-border mb-2" role="status"></div><div>Генеруємо...</div></div>';
+    document.body.appendChild(overlay);
+
     // Add buttons to sections
     const sections = document.querySelectorAll('section');
     sections.forEach((section, idx) => {
@@ -68,23 +86,45 @@
         alert('Будь ласка, вкажіть apiKey у параметрі URL: ?apiKey=YOUR_KEY');
         return;
       }
-      const context = section.innerText.trim();
-      const fullPrompt = `${prompt}\n\nКонтекст сторінки: ${document.title}. Поточний вміст секції:\n${context}\n\nПоверни HTML, який можна додати до сторінки.`;
+      const sectionContext = section.innerText.trim();
+      const clone = document.body.cloneNode(true);
+      const ov = clone.querySelector('#geminiOverlay');
+      if (ov) ov.remove();
+      const pageContext = clone.innerText.trim();
+      const requestBody = {
+        system_instruction: {
+          parts: [{ text: 'You extend the given section. Only return JSON with field "html" containing extra HTML.' }]
+        },
+        contents: [{ parts: [{ text: `User request: ${prompt}\n\nPage context:\n${pageContext}\n\nSection context:\n${sectionContext}` }] }],
+        generationConfig: {
+          responseMimeType: 'application/json',
+          responseSchema: {
+            type: 'OBJECT',
+            properties: { html: { type: 'STRING' } },
+            required: ['html']
+          }
+        }
+      };
+      overlay.style.display = 'flex';
       try {
         const resp = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
           method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({contents: [{parts: [{text: fullPrompt}]}]})
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestBody)
         });
         const data = await resp.json();
-        const text = data.candidates?.[0]?.content?.parts?.map(p=>p.text).join('') || '';
-        if (text) {
-          section.insertAdjacentHTML('beforeend', `<div class="generated mt-2">${text}</div>`);
+        const jsonText = data.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
+        const obj = JSON.parse(jsonText);
+        const html = obj.html || '';
+        if (html) {
+          section.insertAdjacentHTML('beforeend', `<div class="generated mt-2">${html}</div>`);
           save();
         }
       } catch(err){
         console.error(err);
         alert('Не вдалося отримати відповідь від Gemini');
+      } finally {
+        overlay.style.display = 'none';
       }
     }
 
